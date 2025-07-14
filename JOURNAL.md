@@ -6,17 +6,22 @@ H-Bridge Circuit - we don't have a MOSFET but we could try to make our own?? + w
 Potentiometer - can maybe be controlled electronically using analog pwm (but it's actually just digital that mimics analog :))))))), we’d still have to use a separate motor driver
 We worked on the general schematic, and design. Hoping to see what supplies are available tomorrow. 
 
-# Day 2+3:
+# Day 2:
 
-Worked on the CAD model and got circuit python up and running.
+Worked on the CAD model for the wheels and body and tried to get circuit python up and running.
 
-## Tentative Materials List:
+# Day 3:
 
-Servos x 4
-XIAO RP2040 x 2
-NRF Dev Board x 2
+Today we worked on flashing the mcus. This took a while. Installing west, and then all necessary dependencies, there were still various fatal errors when running the west flash command. The other mcu worked without having to load into bootloader mode or having to flash the pro micro at all. This took for than 5 hours and still we couldn't find the issue by the time we decided to switch to a different microcontroller, they were all out including the Orpheus picos :(. Later in the morning we discovered that we did have a minimum viable product up and running some how, this is the current state.
+
+## Bill of Materials:
+
+Gear Motors x 4
+NRF52840 Dev Board x 2
 IMU x 1
 Speaker x 1
+Audio Amp x 1
+9V Battery x 2
 OLED Display x 1
 Neopixels in a band x 1
 
@@ -37,4 +42,5 @@ zhiayang/mikoto: Bluetooth LE nRF52840 microcontroller in a pro-micro footprint.
 
 Does the audio amp have a DAC chip for better sound quality?
 Does the speaker have a built in amplifier or transistor?
+
 
