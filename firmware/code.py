@@ -1,71 +1,81 @@
-# circuitpython
-
-import board
-import digitalio
+from machine import Pin, PWM
 import time
 
-# REAR MOTOR PINS (Driver 1)
-rear_L1 = digitalio.DigitalInOut(board.P1_15)
-rear_L2 = digitalio.DigitalInOut(board.P1_13)
-rear_R1 = digitalio.DigitalInOut(board.P1_11)
-rear_R2 = digitalio.DigitalInOut(board.P0_10)
+rear_ena_pin = 16
+rear_enb_pin = 17
+front_ena_pin = 18
+front_enb_pin = 19
 
-# FRONT MOTOR PINS (Driver 2)
-front_L1 = digitalio.DigitalInOut(board.P0_24)
-front_L2 = digitalio.DigitalInOut(board.P1_00)
-front_R1 = digitalio.DigitalInOut(board.P0_11)
-front_R2 = digitalio.DigitalInOut(board.P1_04)
+rear_L1_pin = 2
+rear_L2_pin = 3
+rear_R1_pin = 4
+rear_R2_pin = 5
 
-# Set pin direction to OUTPUT
-all_pins = [rear_L1, rear_L2, rear_R1, rear_R2,
-            front_L1, front_L2, front_R1, front_R2]
+front_L1_pin = 6
+front_L2_pin = 7
+front_R1_pin = 8
+front_R2_pin = 9
 
-for pin in all_pins:
-    pin.direction = digitalio.Direction.OUTPUT
+rear_ena = PWM(Pin(rear_ena_pin))
+rear_enb = PWM(Pin(rear_enb_pin))
+front_ena = PWM(Pin(front_ena_pin))
+front_enb = PWM(Pin(front_enb_pin))
 
-# Movement functions
+for pwm in [rear_ena, rear_enb, front_ena, front_enb]:
+    pwm.freq(5000)
+
+rear_L1 = Pin(rear_L1_pin, Pin.OUT)
+rear_L2 = Pin(rear_L2_pin, Pin.OUT)
+rear_R1 = Pin(rear_R1_pin, Pin.OUT)
+rear_R2 = Pin(rear_R2_pin, Pin.OUT)
+front_L1 = Pin(front_L1_pin, Pin.OUT)
+front_L2 = Pin(front_L2_pin, Pin.OUT)
+front_R1 = Pin(front_R1_pin, Pin.OUT)
+front_R2 = Pin(front_R2_pin, Pin.OUT)
+
+def set_speed(speed=65535):
+    rear_ena.duty_u16(speed)
+    rear_enb.duty_u16(speed)
+    front_ena.duty_u16(speed)
+    front_enb.duty_u16(speed)
+
 def move_f():
-    # All motors forward
-    rear_L1.value = True;  rear_L2.value = False
-    rear_R1.value = True;  rear_R2.value = False
-    front_L1.value = True; front_L2.value = False
-    front_R1.value = True; front_R2.value = False
+    for motor in [rear_L1, rear_R1, front_L1, front_R1]:
+        motor.value(1)
+    for motor in [rear_L2, rear_R2, front_L2, front_R2]:
+        motor.value(0)
+    set_speed()
 
 def move_b():
-    # All motors backward
-    rear_L1.value = False; rear_L2.value = True
-    rear_R1.value = False; rear_R2.value = True
-    front_L1.value = False; front_L2.value = True
-    front_R1.value = False; front_R2.value = True
+    for motor in [rear_L1, rear_R1, front_L1, front_R1]: 
+        motor.value(0)
+    for motor in [rear_L2, rear_R2, front_L2, front_R2]:
+        motor.value(1)
+    set_speed()
 
 def turn_l():
-    # Left wheels backward, right wheels forward
-    rear_L1.value = False; rear_L2.value = True
-    rear_R1.value = True;  rear_R2.value = False
-    front_L1.value = False; front_L2.value = True
-    front_R1.value = True;  front_R2.value = False
+    rear_L1.value(0); rear_L2.value(1)
+    rear_R1.value(1); rear_R2.value(0)
+    front_L1.value(0); front_L2.value(1)
+    front_R1.value(1); front_R2.value(0)
+    set_speed()
 
 def turn_r():
-    # Right wheels backward, left wheels forward
-    rear_L1.value = True;  rear_L2.value = False
-    rear_R1.value = False; rear_R2.value = True
-    front_L1.value = True;  front_L2.value = False
-    front_R1.value = False; front_R2.value = True
+    rear_L1.value(1); rear_L2.value(0)
+    rear_R1.value(0); rear_R2.value(1)
+    front_L1.value(1); front_L2.value(0)
+    front_R1.value(0); front_R2.value(1)
+    set_speed()
 
 def stop():
-    # All motors off
-    for pin in all_pins:
-        pin.value = False
+    for pin in [rear_L1, rear_L2, rear_R1, rear_R2,
+                front_L1, front_L2, front_R1, front_R2]:
+        pin.value(0)
+    set_speed(0)
 
-# Example loop
 while True:
-    move_f()
-    time.sleep(1)
-    turn_l()
-    time.sleep(1)
-    turn_r()
-    time.sleep(1)
-    move_b()
-    time.sleep(1)
-    stop()
-    time.sleep(2)
+    move_f(); time.sleep(1)
+    turn_l(); time.sleep(1)
+    turn_r(); time.sleep(1)
+    move_b(); time.sleep(1)
+    stop();  time.sleep(2)
