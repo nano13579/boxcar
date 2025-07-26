@@ -1,5 +1,5 @@
 # boxcar
-![alt text](images/20250714_084626.jpg)
+![alt text](images/20250725_234653.jpg)
 An RC Car with 2 pro micros nrf52840, 2 l9n28 motor drivers, 4 dc motors, 1 adxl345 (accelerometer), 1 amp, and one speaker. 
 
 Circuitpython within the current model does not work always.
