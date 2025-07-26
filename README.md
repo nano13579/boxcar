@@ -5,9 +5,13 @@ An RC Car built with:
 ## BOM
 
 Seeed Studio Xiao RP2040 x 2
+
 MPU-6050 IMU x 1
+
 L298N Motor Drivers x 2
+
 DSD Tech HC-05 Module x 2
+
 Jumper Wires
 
 ![alt text](images/20250725_234653.jpg)
