@@ -20,8 +20,4 @@ Utilizing the concept of 'master-slave', the data read from the accelerometer vi
 
 ## Pictures
 
-![alt text](<images/20250714_024453 (1).jpg>) 
-
-![alt text](<images/20250714_034540 (1).jpg>) 
-
 ![alt text](<images/20250714_041952 (1).jpg>)

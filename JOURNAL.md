@@ -12,7 +12,11 @@ Worked on the CAD model for the wheels and body and tried to get circuit python 
 
 # Day 3:
 
-Today we worked on flashing the mcus. This took a while. Installing west, and then all necessary dependencies, there were still various fatal errors when running the west flash command. The other mcu worked without having to load into bootloader mode or having to flash the pro micro at all. This took for than 5 hours and still we couldn't find the issue by the time we decided to switch to a different microcontroller, they were all out including the Orpheus picos :(. Later in the morning we discovered that we did have a minimum viable product up and running some how, this is the current state.
+Today we worked on flashing the mcus. This took a while. Installing west, and then all necessary dependencies, there were still various fatal errors when running the west flash command. The other mcu worked without having to load into bootloader mode or having to flash the pro micro at all. This took more than 5 hours and still we couldn't find the issue by the time we decided to switch to a different microcontroller, they were all out including the Orpheus picos :(. Later in the morning we discovered that we did have a minimum viable product up and running some how, this is the current state.
+
+# Later
+
+We totally reworked our entire framework. With a shortage of materials and an nrf dev board which was mechnically faulty (leading to bootloading problems), we went through other a list of other prospective mcus. After testing with pi pico's  we decided to use xiao rp2040s for smaller size and easier compatibility. We were heavily restricted by the resources in terms of wireless communication (i.e. having only 1 esp32, 1 nrf dev board, 1 HC-05 etc. all with different methods of communication including BLE, Wifi, and Bluetooth Classic). Ultimately we bought an additional HC-05, finding no other alternative than buying another bluetooth module to match ones we already had. Since we did not have access to a 3D printer, everything was made out of cardboard - to be changed later.
 
 ## Bill of Materials:
 
