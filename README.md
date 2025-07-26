@@ -1,17 +1,21 @@
 # boxcar
+
+An RC Car built with:
+
+## BOM
+
+Seeed Studio Xiao RP2040 x 2
+MPU-6050 IMU x 1
+L298N Motor Drivers x 2
+DSD Tech HC-05 Module x 2
+Jumper Wires
+
 ![alt text](images/20250725_234653.jpg)
-An RC Car with 2 pro micros nrf52840, 2 l9n28 motor drivers, 4 dc motors, 1 adxl345 (accelerometer), 1 amp, and one speaker. 
 
-Circuitpython within the current model does not work always.
-It is a box car that is controlled using a module on a glove. Tilting the hand make the car go in that direction. Read JOURNAL.md for more info about the process.
+Utilizing the concept of 'master-slave', the data read from the accelerometer via I2C communication is recorded by the RP2040, and sent from the 'master' HC-05 to the 'slave' HC-05. The RP2040 then processes this data and translates measured x and y directional acceleration into the corresponding movement of 4 motors, controlled by 2 motor drivers. If the accelerometer detects an acceleration greater than +/-5000 mg (raw ADC counts), then the car will move forward/backward accordingly. 
 
-Things we learned:
-- test first
-- wait no CAD FIRST cuz lines get long
-- work, but don't compromise sleep + brainpower
-- a ton about electronics and pinouts and NRF52840s
+## Pictures
 
-Pics in the Process:
 ![alt text](<images/20250714_024453 (1).jpg>) 
 
 ![alt text](<images/20250714_034540 (1).jpg>) 
