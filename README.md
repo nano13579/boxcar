@@ -1,6 +1,8 @@
 # boxcar
 
-An RC Car built with:
+An RC Car
+
+Demo Link: https://youtu.be/CNvrMNcvXPM
 
 ## BOM
 
@@ -13,6 +15,8 @@ L298N Motor Drivers x 2
 DSD Tech HC-05 Module x 2
 
 Jumper Wires
+
+DC Gear Motors x 4
 
 ## Notes
 
