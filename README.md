@@ -1,6 +1,10 @@
 # boxcar
 
-An RC Car built with:
+An RC Car
+
+Demo Link: https://youtu.be/CNvrMNcvXPM
+
+Please note in the video, both car and rc are pluged into computer for 5v power supply due to a lack of material on our end (this will be fixed at a later date - as will the design and frame). The only communication that is occuring between the two separate systems is wireless. 
 
 ## BOM
 
