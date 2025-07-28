@@ -2,4 +2,4 @@
 
 ## Schematic 
 
-![alt text](images\schematic.png)
+![alt text](/images/schematic.png)
