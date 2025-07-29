@@ -1,6 +1,6 @@
 # boxcar
 
-An RC Car
+An RC Car that translates detected movement of the remote control into acceleration in the x and y direction. Inspired by common toy rc cars controlled by joysticks and buttons - we decided to add our own spin to current designs. 
 
 Demo Link: https://youtu.be/CNvrMNcvXPM
 
